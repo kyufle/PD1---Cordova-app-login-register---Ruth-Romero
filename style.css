@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #b8d8e0; /* o el color que estás usando */
+    background-color: #b8d8e0;
 }
 
 div {
@@ -19,3 +19,11 @@ div button{
     width: 70px;
 }
 
+.correct {
+    color: green;
+}
+
+
+.incorrect {
+    color: red;
+}

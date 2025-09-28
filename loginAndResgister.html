@@ -34,8 +34,13 @@
         }
         if (login){
             loginP.textContent = "The user and password are correct";
+            loginP.classList.remove("incorrect");
+            loginP.classList.add("correct");
+            
         } else{
-            loginP.textContent = "The user and password are incorrect";  
+            loginP.textContent = "The user and password are incorrect";
+            loginP.classList.remove("correct");
+            loginP.classList.add("incorrect");  
         }
 
     }
