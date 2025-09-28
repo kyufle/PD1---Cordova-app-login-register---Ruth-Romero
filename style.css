@@ -1,4 +1,21 @@
-div {
+body {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    height: 100vh;
+    margin: 0;
+    background-color: #b8d8e0; /* o el color que estás usando */
 }
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+div button{
+    width: 70px;
+}
+

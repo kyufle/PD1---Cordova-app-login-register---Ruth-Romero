@@ -8,6 +8,7 @@
 </head>
 <body>
     <div>
+        <h1>Login</h1>
         <input id="userNameLogin" type="text">
         <input id="userPasswordLogin" type="password">
         <button id="login" onclick="loginButton()">Login</button>
@@ -23,15 +24,20 @@
         const userNameLogin = document.getElementById("userNameLogin").value;
         const userPasswordLogin = document.getElementById("userPasswordLogin").value;
         const loginP = document.getElementById("loginP");
-       
+        let login = false;
         for (users in usersAndPassword){
-            loginP.textContent = "";
+            console.log(users === userNameLogin, userPasswordLogin === usersAndPassword[users]);
             if (users === userNameLogin && usersAndPassword[users] === userPasswordLogin){
-                loginP.textContent = "The user and password are correct.";
-            } else{
-                loginP.textContent = "The user and password are incorrect.";
+                loginP.textContent = "";
+                login = true;
             }
         }
+        if (login){
+            loginP.textContent = "The user and password are correct";
+        } else{
+            loginP.textContent = "The user and password are incorrect";  
+        }
+
     }
     </script>
 </body>
