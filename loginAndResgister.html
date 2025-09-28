@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <input id="userNameLogin" type="text">
+        <input id="userPasswordLogin" type="password">
+        <button id="login" onclick="loginButton()">Login</button>
+        <p id="loginP"></p>
+    </div>
+    
+    <script>
+    const usersAndPassword = {
+        manuel: 'P@ssword',
+        paco: 'P@ssword1'
+    };
+    function loginButton(){
+        const userNameLogin = document.getElementById("userNameLogin").value;
+        const userPasswordLogin = document.getElementById("userPasswordLogin").value;
+        const loginP = document.getElementById("loginP");
+       
+        for (users in usersAndPassword){
+            loginP.textContent = "";
+            if (users === userNameLogin && usersAndPassword[users] === userPasswordLogin){
+                loginP.textContent = "The user and password are correct.";
+            } else{
+                loginP.textContent = "The user and password are incorrect.";
+            }
+        }
+    }
+    </script>
+</body>
+</html>
