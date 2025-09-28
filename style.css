@@ -17,12 +17,16 @@ div {
     margin-top: 50px;
 }
 
-div p#donthaveaccount{
+div p#dont-haveaccount{
     margin-bottom: 150px;
 }
 
 div button{
     width: 70px;
+}
+
+h1#login {
+    padding-top: 50px;
 }
 
 .correct {
@@ -32,4 +36,16 @@ div button{
 
 .incorrect {
     color: red;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 200px;
+  padding: 4px;
+  box-sizing: border-box;
 }

@@ -8,22 +8,20 @@
 </head>
 <body>
     <div>
-        <h1>Login</h1>
-        <input id="usuari" type="text">
-        <input id="contrasenya" type="password">
+        <h1 id="login">Login</h1>
+        <label for="usuari">Name: <input id="usuari" type="text"></label>
+        <label for="contrasenya">Password: <input id="contrasenya" type="password"></label>
         <button id="login" onclick="fer_login()">Login</button>
         <p id="loginP"></p>
-        <p id="donthaveaccount">Do you don't have account yet? <a href="#signin">Sign in</a></p>
-        
-        
-        
+        <p id="dont-haveaccount">Do you don't have account yet? <a href="#signin">Sign in</a></p>
         <h1 id="signin">Sign in</h1>
-        <input id="reg_usuari" type="text">
-        <input id="reg_email" type="text">
-        <input id="reg_contrasenya_1" type="password">
-        <input id="reg_contrasenya_2" type="password">
-        <p id="loginP"></p>
+        <label for="reg_usuari">Name: <input id="reg_usuari" type="text"></label>
+        <label for="reg_email">Email: <input id="reg_email" type="text"></label>
+        <label for="reg_contrasenya_1">Password: <input id="reg_contrasenya_1" type="password"></label>
+        <label for="reg_contrasenya_2">Repeat password: <input id="reg_contrasenya_2" type="password"></label>
+        <p id="signInP"></p>
         <button id="signin" onclick="registra()">Registra</button>
+        <p id="dont-haveaccount">Already have an account? <a href="#login">Login</a></p>
     </div>
     
     <script>
@@ -32,7 +30,6 @@
             correo: '',
             password: 'cordova'
         },
-        // paco: 'P@ssword1'
     };
 
     function fer_login(){
@@ -69,10 +66,17 @@
             if (reg_usuari === users || reg_email === usersAndPassword[users].correo){
                 existente = true;
                 alert("El nom o l'email ja existeix a la base de dades");
+                signInP.textContent = "The name or email already exists in the database.";
+                signInP.classList.remove("correct");
+                signInP.classList.add("incorrect");
             }
         }
         if (reg_contrasenya_1 != reg_contrasenya_2){
             alert("Error en les contrasenyes");
+            signInP.textContent = "Password error.";
+            signInP.classList.remove("correct");
+            signInP.classList.add("incorrect");
+            
         }
         if (!existente && reg_contrasenya_1 === reg_contrasenya_2){
             usersAndPassword[reg_usuari] = {
@@ -80,6 +84,10 @@
                 password: reg_contrasenya_1
             }
             alert("Nou usuari registrat correctament");
+            signInP.textContent = "Successfully created.";
+            signInP.classList.remove("incorrect");
+            signInP.classList.add("correct");
+            
         }
     }
     </script>
