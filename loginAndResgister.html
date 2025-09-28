@@ -13,6 +13,14 @@
         <input id="userPasswordLogin" type="password">
         <button id="login" onclick="loginButton()">Login</button>
         <p id="loginP"></p>
+        <p id="donthaveaccount">Do you don't have account yet? <a href="#signin">Sign in</a></p>
+        
+        
+        
+        <h1 id="signin">Sign in</h1>
+        <input id="userNameSignin" type="text">
+        <input id="userPasswordSignin" type="password">
+        <button id="signin" onclick="signInButton()">Sign in</button>
     </div>
     
     <script>
@@ -42,7 +50,13 @@
             loginP.classList.remove("correct");
             loginP.classList.add("incorrect");  
         }
-
+    }
+    
+    function signInButton(){
+        const userNameSignin = document.getElementById("userNameSignin").value;
+        const userPasswordSignin = document.getElementById("userPasswordSignin").value;
+        usersAndPassword.put(userNameSignin, userPasswordSignin);
+        console.log(users);
     }
     </script>
 </body>
