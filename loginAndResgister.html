@@ -9,34 +9,39 @@
 <body>
     <div>
         <h1>Login</h1>
-        <input id="userNameLogin" type="text">
-        <input id="userPasswordLogin" type="password">
-        <button id="login" onclick="loginButton()">Login</button>
+        <input id="usuari" type="text">
+        <input id="contrasenya" type="password">
+        <button id="login" onclick="fer_login()">Login</button>
         <p id="loginP"></p>
         <p id="donthaveaccount">Do you don't have account yet? <a href="#signin">Sign in</a></p>
         
         
         
         <h1 id="signin">Sign in</h1>
-        <input id="userNameSignin" type="text">
-        <input id="userPasswordSignin" type="password">
-        <button id="signin" onclick="signInButton()">Sign in</button>
+        <input id="reg_usuari" type="text">
+        <input id="reg_email" type="text">
+        <input id="reg_contrasenya_1" type="password">
+        <input id="reg_contrasenya_2" type="password">
+        <p id="loginP"></p>
+        <button id="signin" onclick="registra()">Registra</button>
     </div>
     
     <script>
     const usersAndPassword = {
-        manuel: 'P@ssword',
-        paco: 'P@ssword1'
+        ieti : {
+            correo: '',
+            password: 'cordova'
+        },
+        // paco: 'P@ssword1'
     };
-    function loginButton(){
-        const userNameLogin = document.getElementById("userNameLogin").value;
-        const userPasswordLogin = document.getElementById("userPasswordLogin").value;
+
+    function fer_login(){
+        const usuari = document.getElementById("usuari").value;
+        const contrasenya = document.getElementById("contrasenya").value;
         const loginP = document.getElementById("loginP");
         let login = false;
         for (users in usersAndPassword){
-            console.log(users === userNameLogin, userPasswordLogin === usersAndPassword[users]);
-            if (users === userNameLogin && usersAndPassword[users] === userPasswordLogin){
-                loginP.textContent = "";
+            if (users === usuari && usersAndPassword[users].password === contrasenya){
                 login = true;
             }
         }
@@ -44,19 +49,38 @@
             loginP.textContent = "The user and password are correct";
             loginP.classList.remove("incorrect");
             loginP.classList.add("correct");
+            alert("Login exitós");
             
         } else{
             loginP.textContent = "The user and password are incorrect";
             loginP.classList.remove("correct");
-            loginP.classList.add("incorrect");  
+            loginP.classList.add("incorrect");
+            alert("Login incorrecte");
         }
     }
     
-    function signInButton(){
-        const userNameSignin = document.getElementById("userNameSignin").value;
-        const userPasswordSignin = document.getElementById("userPasswordSignin").value;
-        usersAndPassword.put(userNameSignin, userPasswordSignin);
-        console.log(users);
+    function registra(){
+        const reg_usuari  = document.getElementById("reg_usuari").value;
+        const reg_email = document.getElementById("reg_email").value;
+        const reg_contrasenya_1 = document.getElementById("reg_contrasenya_1").value;
+        const reg_contrasenya_2 = document.getElementById("reg_contrasenya_2").value;
+        let existente = false;
+        for (users in usersAndPassword){
+            if (reg_usuari === users || reg_email === usersAndPassword[users].correo){
+                existente = true;
+                alert("El nom o l'email ja existeix a la base de dades");
+            }
+        }
+        if (reg_contrasenya_1 != reg_contrasenya_2){
+            alert("Error en les contrasenyes");
+        }
+        if (!existente && reg_contrasenya_1 === reg_contrasenya_2){
+            usersAndPassword[reg_usuari] = {
+                correo: reg_email,
+                password: reg_contrasenya_1
+            }
+            alert("Nou usuari registrat correctament");
+        }
     }
     </script>
 </body>
