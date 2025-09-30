@@ -36,13 +36,20 @@ function registra(){
     const reg_contrasenya_2 = document.getElementById("reg_contrasenya_2").value;
     let existente = false;
     for (users in usersAndPassword){
-        if (reg_usuari === users || reg_email === usersAndPassword[users].correo){
+        if (reg_usuari === users && reg_email === usersAndPassword[users].correo){
             existente = true;
             alert("El nom o l'email ja existeix a la base de dades");
             signInP.textContent = "The name or email already exists in the database.";
             signInP.classList.remove("correct");
             signInP.classList.add("incorrect");
         }
+    }
+    if(reg_usuari === "" || reg_email==="" || reg_contrasenya_1==="" || reg_contrasenya_2===""){
+        alert("S'han d'omplir tots els camps per crear un usuari nou");
+        signInP.textContent = "All fields must be filled in to create a new user.";
+        signInP.classList.remove("correct");
+        signInP.classList.add("incorrect");
+        existente = true;
     }
     if (reg_contrasenya_1 != reg_contrasenya_2){
         alert("Error en les contrasenyes");
